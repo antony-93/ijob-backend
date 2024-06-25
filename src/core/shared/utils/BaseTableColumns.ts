@@ -9,7 +9,6 @@ export const BaseTableColumns = [
     new TableColumn({
         name: "atualizado_em",
         type: "timestamp",
-        default: "now()",
         onUpdate: "now()",
     }),
 ];
