@@ -17,6 +17,12 @@ export class Usuario extends BaseEntity {
     @Column()
     senha: string;
 
+    @Column()
+    cpf: number;
+
+    @Column()
+    data_nascimento: Date;
+
     public setUsuarioByCreateUsuarioDto(usuarioDto: CreateUsuarioDto) {
         this.nome = usuarioDto.nome;
         this.email = usuarioDto.email;
