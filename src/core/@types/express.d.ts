@@ -1,6 +1,10 @@
 declare namespace Express {
+    import { IParams } from "../shared/interfaces/IParams";
+
     interface Request {
         userId: string;
+        prestadorId: string
+        defaultParams: IParams
     }
 
     interface Response {

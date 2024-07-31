@@ -17,5 +17,5 @@ export default (app: Router) => {
 
   app.use('/authenticate', route);
 
-  route.post('/', validateDTO(AuthenticateDto), _authController.usuarioAuthenticate);
+  route.post('/', validateDTO(AuthenticateDto), _authController.autenticarUsuario);
 };

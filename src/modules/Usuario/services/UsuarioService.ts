@@ -31,7 +31,9 @@ export class UsuarioService {
             usuario.setUsuarioByCreateUsuarioDto(usuarioDto);
             await usuario.hashSenha();
 
-            return await this._usuarioRepository.saveUsuario(usuario);
+            const resUsuario = await this._usuarioRepository.saveUsuario(usuario);
+            resUsuario.senha = usuarioDto.senha;
+            return resUsuario;
         } catch(error) {
             if (error instanceof ValidationErrorFields) {
                 throw error;

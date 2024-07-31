@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "../../../core/shared/utils/BaseEntity";
 import { CreateUsuarioDto } from "../dtos/create-usuario.dto";
 import bcrypt from 'bcrypt';
+import { Endereco } from "../../Endereco/entities/Endereco";
 
 @Entity("usuarios")
 export class Usuario extends BaseEntity {
@@ -23,10 +24,15 @@ export class Usuario extends BaseEntity {
     @Column()
     data_nascimento: Date;
 
+    @OneToMany(() => Endereco, (endereco) => endereco.usuario)
+    enderecos: Endereco[];
+
     public setUsuarioByCreateUsuarioDto(usuarioDto: CreateUsuarioDto) {
         this.nome = usuarioDto.nome;
         this.email = usuarioDto.email;
         this.senha = usuarioDto.senha;
+        this.cpf = usuarioDto.cpf;
+        this.data_nascimento = usuarioDto.data_nascimento;
     }
 
     async hashSenha(): Promise<void> {

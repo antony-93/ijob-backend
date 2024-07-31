@@ -19,7 +19,7 @@ export class UsuarioController {
     createUsuario = async (req: Request, res: Response) => {
         try {
             const usuario: Usuario = await this._usuarioService.saveNewUsuario(req.body);
-            res.success({ message: 'Usuário criado com sucesso', content: [usuario] })
+            res.success({ message: 'Usuário criado com sucesso', content: usuario })
         } catch (error) {
             if (error instanceof ValidationErrorFields) {
                 res.badRequest(error)
